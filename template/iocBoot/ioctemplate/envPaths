@@ -1,0 +1,3 @@
+epicsEnvSet("IOC","ioctemplate")
+epicsEnvSet("TOP","/home/lees2/base-3.15.5/template")
+epicsEnvSet("EPICS_BASE","/usr/local/epics/base-3.15.5")

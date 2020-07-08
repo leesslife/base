@@ -1,0 +1,83 @@
+make -C ./configure install 
+//加载配置文件
+make[1]: Entering directory `/home/lees2/base-3.15.5/template/configure'
+perl -CSD /usr/local/epics/base-3.15.5/bin/linux-x86_64/makeMakefile.pl O.linux-x86_64 ../..
+//建立建立makefile文件
+mkdir O.Common
+make -C O.linux-x86_64 -f ../Makefile TOP=../.. T_A=linux-x86_64 install
+//加载目标文件 加入template环境
+make[2]: Entering directory `/home/lees2/base-3.15.5/template/configure/O.linux-x86_64'
+perl -CSD /usr/local/epics/base-3.15.5/bin/linux-x86_64/convertRelease.pl checkRelease
+
+make[2]: Leaving directory `/home/lees2/base-3.15.5/template/configure/O.linux-x86_64'
+make[1]: Leaving directory `/home/lees2/base-3.15.5/template/configure'
+make -C ./templateApp install 
+make[1]: Entering directory `/home/lees2/base-3.15.5/template/templateApp'
+make -C ./src install 
+make[2]: Entering directory `/home/lees2/base-3.15.5/template/templateApp/src'
+perl -CSD /usr/local/epics/base-3.15.5/bin/linux-x86_64/makeMakefile.pl O.linux-x86_64 ../../..
+mkdir O.Common
+make -C O.linux-x86_64 -f ../Makefile TOP=../../.. \
+    T_A=linux-x86_64 install
+make[3]: Entering directory `/home/lees2/base-3.15.5/template/templateApp/src/O.linux-x86_64'
+perl -CSD /usr/local/epics/base-3.15.5/bin/linux-x86_64/dbdToRecordtypeH.pl   -I. -I.. -I../O.Common -I../../../dbd -I/usr/local/epics/base-3.15.5/dbd -o xxxRecord.h ../xxxRecord.dbd
+/usr/bin/gcc  -D_GNU_SOURCE -D_DEFAULT_SOURCE            -D_X86_64_  -DUNIX  -Dlinux     -O3 -g   -Wall      -mtune=generic     -m64 -fPIC -I. -I../O.Common -I. -I. -I.. -I../../../include/compiler/gcc -I../../../include/os/Linux -I../../../include -I/usr/local/epics/base-3.15.5/include/compiler/gcc -I/usr/local/epics/base-3.15.5/include/os/Linux -I/usr/local/epics/base-3.15.5/include        -MM -MF initTrace.d  ../initTrace.c
+/usr/bin/gcc  -D_GNU_SOURCE -D_DEFAULT_SOURCE            -D_X86_64_  -DUNIX  -Dlinux     -O3 -g   -Wall      -mtune=generic     -m64 -fPIC -I. -I../O.Common -I. -I. -I.. -I../../../include/compiler/gcc -I../../../include/os/Linux -I../../../include -I/usr/local/epics/base-3.15.5/include/compiler/gcc -I/usr/local/epics/base-3.15.5/include/os/Linux -I/usr/local/epics/base-3.15.5/include        -MM -MF templateHello.d  ../templateHello.c
+/usr/bin/gcc  -D_GNU_SOURCE -D_DEFAULT_SOURCE            -D_X86_64_  -DUNIX  -Dlinux     -O3 -g   -Wall      -mtune=generic     -m64 -fPIC -I. -I../O.Common -I. -I. -I.. -I../../../include/compiler/gcc -I../../../include/os/Linux -I../../../include -I/usr/local/epics/base-3.15.5/include/compiler/gcc -I/usr/local/epics/base-3.15.5/include/os/Linux -I/usr/local/epics/base-3.15.5/include        -MM -MF dbSubExample.d  ../dbSubExample.c
+/usr/bin/gcc  -D_GNU_SOURCE -D_DEFAULT_SOURCE            -D_X86_64_  -DUNIX  -Dlinux     -O3 -g   -Wall      -mtune=generic     -m64 -fPIC -I. -I../O.Common -I. -I. -I.. -I../../../include/compiler/gcc -I../../../include/os/Linux -I../../../include -I/usr/local/epics/base-3.15.5/include/compiler/gcc -I/usr/local/epics/base-3.15.5/include/os/Linux -I/usr/local/epics/base-3.15.5/include        -MM -MF devXxxSoft.d  ../devXxxSoft.c
+/usr/bin/gcc  -D_GNU_SOURCE -D_DEFAULT_SOURCE            -D_X86_64_  -DUNIX  -Dlinux     -O3 -g   -Wall      -mtune=generic     -m64 -fPIC -I. -I../O.Common -I. -I. -I.. -I../../../include/compiler/gcc -I../../../include/os/Linux -I../../../include -I/usr/local/epics/base-3.15.5/include/compiler/gcc -I/usr/local/epics/base-3.15.5/include/os/Linux -I/usr/local/epics/base-3.15.5/include        -MM -MF xxxRecord.d  ../xxxRecord.c
+/usr/bin/g++  -D_GNU_SOURCE -D_DEFAULT_SOURCE            -D_X86_64_  -DUNIX  -Dlinux     -O3 -g   -Wall      -mtune=generic     -m64  -I. -I../O.Common -I. -I. -I.. -I../../../include/compiler/gcc -I../../../include/os/Linux -I../../../include -I/usr/local/epics/base-3.15.5/include/compiler/gcc -I/usr/local/epics/base-3.15.5/include/os/Linux -I/usr/local/epics/base-3.15.5/include        -MM -MF templateMain.d  ../templateMain.cpp
+Creating dbd file template.dbd
+perl -CSD /usr/local/epics/base-3.15.5/bin/linux-x86_64/dbdExpand.pl   -I. -I.. -I../O.Common -I../../../dbd -I/usr/local/epics/base-3.15.5/dbd -o template.dbd base.dbd xxxSupport.dbd dbSubExample.dbd templateHello.dbd initTrace.dbd
+perl -CSD /usr/local/epics/base-3.15.5/bin/linux-x86_64/registerRecordDeviceDriver.pl   -I. -I.. -I../O.Common -I../../../dbd -I/usr/local/epics/base-3.15.5/dbd    -o template_registerRecordDeviceDriver.cpp ../O.Common/template.dbd template_registerRecordDeviceDriver /home/lees2/base-3.15.5/template
+/usr/bin/g++  -D_GNU_SOURCE -D_DEFAULT_SOURCE            -D_X86_64_  -DUNIX  -Dlinux     -O3 -g   -Wall      -mtune=generic     -m64  -I. -I../O.Common -I. -I. -I.. -I../../../include/compiler/gcc -I../../../include/os/Linux -I../../../include -I/usr/local/epics/base-3.15.5/include/compiler/gcc -I/usr/local/epics/base-3.15.5/include/os/Linux -I/usr/local/epics/base-3.15.5/include        -MM -MF template_registerRecordDeviceDriver.d  template_registerRecordDeviceDriver.cpp
+make[3]: Leaving directory `/home/lees2/base-3.15.5/template/templateApp/src/O.linux-x86_64'
+make[3]: Entering directory `/home/lees2/base-3.15.5/template/templateApp/src/O.linux-x86_64'
+Installing dbd file ../../../dbd/xxxSupport.dbd
+mkdir ../../../dbd
+Installing created dbd file ../../../dbd/template.dbd
+Installing dbd file ../../../dbd/xxxRecord.dbd
+Installing generated generic include file ../../../include/xxxRecord.h
+mkdir ../../../include
+/usr/bin/gcc  -D_GNU_SOURCE -D_DEFAULT_SOURCE            -D_X86_64_  -DUNIX  -Dlinux     -O3 -g   -Wall      -mtune=generic     -m64 -fPIC -I. -I../O.Common -I. -I. -I.. -I../../../include/compiler/gcc -I../../../include/os/Linux -I../../../include -I/usr/local/epics/base-3.15.5/include/compiler/gcc -I/usr/local/epics/base-3.15.5/include/os/Linux -I/usr/local/epics/base-3.15.5/include        -c ../xxxRecord.c
+/usr/bin/gcc  -D_GNU_SOURCE -D_DEFAULT_SOURCE            -D_X86_64_  -DUNIX  -Dlinux     -O3 -g   -Wall      -mtune=generic     -m64 -fPIC -I. -I../O.Common -I. -I. -I.. -I../../../include/compiler/gcc -I../../../include/os/Linux -I../../../include -I/usr/local/epics/base-3.15.5/include/compiler/gcc -I/usr/local/epics/base-3.15.5/include/os/Linux -I/usr/local/epics/base-3.15.5/include        -c ../devXxxSoft.c
+/usr/bin/gcc  -D_GNU_SOURCE -D_DEFAULT_SOURCE            -D_X86_64_  -DUNIX  -Dlinux     -O3 -g   -Wall      -mtune=generic     -m64 -fPIC -I. -I../O.Common -I. -I. -I.. -I../../../include/compiler/gcc -I../../../include/os/Linux -I../../../include -I/usr/local/epics/base-3.15.5/include/compiler/gcc -I/usr/local/epics/base-3.15.5/include/os/Linux -I/usr/local/epics/base-3.15.5/include        -c ../dbSubExample.c
+/usr/bin/gcc  -D_GNU_SOURCE -D_DEFAULT_SOURCE            -D_X86_64_  -DUNIX  -Dlinux     -O3 -g   -Wall      -mtune=generic     -m64 -fPIC -I. -I../O.Common -I. -I. -I.. -I../../../include/compiler/gcc -I../../../include/os/Linux -I../../../include -I/usr/local/epics/base-3.15.5/include/compiler/gcc -I/usr/local/epics/base-3.15.5/include/os/Linux -I/usr/local/epics/base-3.15.5/include        -c ../templateHello.c
+/usr/bin/gcc  -D_GNU_SOURCE -D_DEFAULT_SOURCE            -D_X86_64_  -DUNIX  -Dlinux     -O3 -g   -Wall      -mtune=generic     -m64 -fPIC -I. -I../O.Common -I. -I. -I.. -I../../../include/compiler/gcc -I../../../include/os/Linux -I../../../include -I/usr/local/epics/base-3.15.5/include/compiler/gcc -I/usr/local/epics/base-3.15.5/include/os/Linux -I/usr/local/epics/base-3.15.5/include        -c ../initTrace.c
+/usr/bin/ar -rc    libtemplateSupport.a        xxxRecord.o devXxxSoft.o dbSubExample.o templateHello.o initTrace.o 
+/usr/bin/ranlib libtemplateSupport.a
+/usr/bin/g++ -o libtemplateSupport.so -shared -fPIC -Wl,-hlibtemplateSupport.so -L/home/lees2/base-3.15.5/template/lib/linux-x86_64 -L/usr/local/epics/base-3.15.5/lib/linux-x86_64 -Wl,-rpath,/home/lees2/base-3.15.5/template/lib/linux-x86_64 -Wl,-rpath,/usr/local/epics/base-3.15.5/lib/linux-x86_64           -rdynamic -m64            xxxRecord.o devXxxSoft.o dbSubExample.o templateHello.o initTrace.o    -ldbRecStd -ldbCore -lca -lCom   -lpthread   -lreadline -lm -lrt -ldl -lgcc
+Installing shared library ../../../lib/linux-x86_64/libtemplateSupport.so
+mkdir ../../../lib
+mkdir ../../../lib/linux-x86_64
+Installing library ../../../lib/linux-x86_64/libtemplateSupport.a
+/usr/bin/g++  -D_GNU_SOURCE -D_DEFAULT_SOURCE            -D_X86_64_  -DUNIX  -Dlinux     -O3 -g   -Wall      -mtune=generic     -m64  -I. -I../O.Common -I. -I. -I.. -I../../../include/compiler/gcc -I../../../include/os/Linux -I../../../include -I/usr/local/epics/base-3.15.5/include/compiler/gcc -I/usr/local/epics/base-3.15.5/include/os/Linux -I/usr/local/epics/base-3.15.5/include        -c template_registerRecordDeviceDriver.cpp
+/usr/bin/g++  -D_GNU_SOURCE -D_DEFAULT_SOURCE            -D_X86_64_  -DUNIX  -Dlinux     -O3 -g   -Wall      -mtune=generic     -m64  -I. -I../O.Common -I. -I. -I.. -I../../../include/compiler/gcc -I../../../include/os/Linux -I../../../include -I/usr/local/epics/base-3.15.5/include/compiler/gcc -I/usr/local/epics/base-3.15.5/include/os/Linux -I/usr/local/epics/base-3.15.5/include        -c ../templateMain.cpp
+/usr/bin/g++ -o template  -L/home/lees2/base-3.15.5/template/lib/linux-x86_64 -L/usr/local/epics/base-3.15.5/lib/linux-x86_64 -Wl,-rpath,/home/lees2/base-3.15.5/template/lib/linux-x86_64 -Wl,-rpath,/usr/local/epics/base-3.15.5/lib/linux-x86_64           -rdynamic -m64            template_registerRecordDeviceDriver.o templateMain.o    -ltemplateSupport -ldbRecStd -ldbCore -lca -lCom   
+Installing created executable ../../../bin/linux-x86_64/template
+mkdir ../../../bin
+mkdir ../../../bin/linux-x86_64
+make[3]: Leaving directory `/home/lees2/base-3.15.5/template/templateApp/src/O.linux-x86_64'
+make[2]: Leaving directory `/home/lees2/base-3.15.5/template/templateApp/src'
+make -C ./Db install 
+make[2]: Entering directory `/home/lees2/base-3.15.5/template/templateApp/Db'
+perl -CSD /usr/local/epics/base-3.15.5/bin/linux-x86_64/makeMakefile.pl O.linux-x86_64 ../../..
+mkdir O.Common
+make -C O.linux-x86_64 -f ../Makefile TOP=../../.. \
+    T_A=linux-x86_64 install
+make[3]: Entering directory `/home/lees2/base-3.15.5/template/templateApp/Db/O.linux-x86_64'
+Installing ../../../db/dbExample1.db
+mkdir ../../../db
+Installing ../../../db/dbExample2.db
+Installing ../../../db/dbSubExample.db
+Installing substitution file ../../../db/user.substitutions
+make[3]: Leaving directory `/home/lees2/base-3.15.5/template/templateApp/Db/O.linux-x86_64'
+make[2]: Leaving directory `/home/lees2/base-3.15.5/template/templateApp/Db'
+make[1]: Leaving directory `/home/lees2/base-3.15.5/template/templateApp'
+make -C ./iocBoot install 
+make[1]: Entering directory `/home/lees2/base-3.15.5/template/iocBoot'
+make -C ./ioctemplate install 
+make[2]: Entering directory `/home/lees2/base-3.15.5/template/iocBoot/ioctemplate'
+perl -CSD /usr/local/epics/base-3.15.5/bin/linux-x86_64/convertRelease.pl -t /home/lees2/base-3.15.5/template envPaths
+make[2]: Leaving directory `/home/lees2/base-3.15.5/template/iocBoot/ioctemplate'
+make[1]: Leaving directory `/home/lees2/base-3.15.5/template/iocBoot'
